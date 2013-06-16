@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpenAggregator</class>
+ <widget class="QMainWindow" name="OpenAggregator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>921</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OpenAggregator</string>
+  </property>
+  <widget class="QWidget" name="main">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="handleWidth">
+       <number>1</number>
+      </property>
+      <widget class="QTreeView" name="feeds">
+       <property name="maximumSize">
+        <size>
+         <width>320</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+      </widget>
+      <widget class="QTextBrowser" name="textBrowser"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>921</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="file">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="import_2"/>
+    <addaction name="setHost"/>
+   </widget>
+   <addaction name="file"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>25</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="import_2">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="setHost">
+   <property name="text">
+    <string>Set Host</string>
+   </property>
+  </action>
+  <action name="actionAdd">
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionAdd</sender>
+   <signal>triggered()</signal>
+   <receiver>OpenAggregator</receiver>
+   <slot>AddFeed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>setHost</sender>
+   <signal>triggered()</signal>
+   <receiver>OpenAggregator</receiver>
+   <slot>SetHost()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>import_2</sender>
+   <signal>triggered()</signal>
+   <receiver>OpenAggregator</receiver>
+   <slot>Import()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>feeds</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>OpenAggregator</receiver>
+   <slot>FeedOrFolderSelected(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>AddFeed()</slot>
+  <slot>SetHost()</slot>
+  <slot>Import()</slot>
+  <slot>FolderNameChanged(QString)</slot>
+  <slot>FeedOrFolderSelected(QModelIndex)</slot>
+ </slots>
+</ui>
